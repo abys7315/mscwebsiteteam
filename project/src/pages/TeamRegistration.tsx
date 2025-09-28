@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 // Placeholder for StarryBackground to make the component self-contained
 const StarryBackground = () => <div className="absolute inset-0 bg-gray-900"></div>;
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5001/api';
 
 const TeamRegistration = () => {
   const [formData, setFormData] = useState({
@@ -113,7 +114,7 @@ const TeamRegistration = () => {
         }
       });
 
-      const response = await fetch('http://localhost:5001/api/team-members', {
+      const response = await fetch(`${API_BASE}/team-members`, {
         method: 'POST',
         body: formDataToSend,
       });

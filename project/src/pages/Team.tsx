@@ -48,6 +48,8 @@ const departmentColors: { [key: string]: string } = {
   'Research and Development Team': '#FFCC00',
 };
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5001/api';
+
 const Team = () => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
@@ -58,7 +60,7 @@ const Team = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await fetch('http://localhost:5001/api/team-members');
+        const response = await fetch(`${API_BASE}/team-members`);
         if (response.ok) {
           const data = await response.json();
           setTeamMembers(data.data);
