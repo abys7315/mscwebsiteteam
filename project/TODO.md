@@ -1,3 +1,4 @@
+- [x] Add loading state to team registration form - show 'Registering...' when submitting
 - [ ] Modify Team.tsx to position member details modal relative to hovered card
 - [ ] Add onMouseLeave to clear selectedMember
 - [ ] Move modal content inside each member's motion.div as tooltip

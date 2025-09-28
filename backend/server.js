@@ -4,6 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
 
@@ -36,6 +37,9 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Static files for uploaded images
 app.use('/uploads', express.static('uploads'));
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../project/dist')));
+
 // Routes
 app.use('/api/team-members', require('./routes/teamMemberRoutes'));
 
@@ -54,12 +58,9 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler
-app.use('*', (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'Route not found'
-  });
+// Catch all handler: send back React's index.html file for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../project/dist/index.html'));
 });
 
 // Database connection
