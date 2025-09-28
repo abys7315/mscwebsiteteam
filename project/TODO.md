@@ -1,0 +1,6 @@
+- [ ] Modify Team.tsx to position member details modal relative to hovered card
+- [ ] Add onMouseLeave to clear selectedMember
+- [ ] Move modal content inside each member's motion.div as tooltip
+- [ ] Condense modal content to fit w-[300px]
+- [ ] Remove global modal section
+- [ ] Test tooltip positioning and content display
